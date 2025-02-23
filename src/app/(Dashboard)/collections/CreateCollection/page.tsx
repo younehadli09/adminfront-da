@@ -9,7 +9,7 @@ export default function CreateCollection() {
         <div className="flex  w-full ">
             <Layout>
                 <div className="flex justify-center">
-                    <CollectionForm />
+                    <CollectionForm _id={""} name={""} icon={""} color={""} typestore={""} createdAt={""} updatedAt={""} />
                 </div>
             </Layout>
         </div>
