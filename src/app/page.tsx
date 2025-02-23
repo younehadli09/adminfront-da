@@ -1,7 +1,6 @@
 "use client"; // Make this a client component
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+
 // import SignIn from "./(auth)/sign-in/[[...sign-in]]/page";
 
 import SignIn from "@/app/(auth)/signin/page";

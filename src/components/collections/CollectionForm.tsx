@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation"; // Import useRouter
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -26,7 +25,7 @@ const formSchema = z.object({
     typestore: z.string().min(1, "Please select a type"),
 });
 
-const CollectionForm: React.FC<any> = () => {
+const CollectionForm: React.FC<CollectionType> = () => {
     const [loading, setLoading] = useState(false);
     const [images, setImages] = useState<File[]>([]); // Change to File type for FormData
     const form = useForm<z.infer<typeof formSchema>>({
@@ -38,7 +37,6 @@ const CollectionForm: React.FC<any> = () => {
             typestore: "",
         },
     });
-    const router = useRouter();
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
