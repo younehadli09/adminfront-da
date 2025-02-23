@@ -17,7 +17,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
+interface CollectionFormProps {
+    initialData: CollectionType;
+  }
+  
 const formSchema = z.object({
     name: z.string().min(2).max(20),
     description: z.string().min(2).max(500).trim(),
@@ -25,17 +28,18 @@ const formSchema = z.object({
     typestore: z.string().min(1, "Please select a type"),
 });
 
-const CollectionForm: React.FC<CollectionType> = () => {
+const CollectionForm: React.FC<CollectionFormProps> = ({ initialData }) => {
     const [loading, setLoading] = useState(false);
-    const [images, setImages] = useState<File[]>([]); // Change to File type for FormData
+    const [images, setImages] = useState<File[]>([]);
+  
     const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: "",
-            description: "",
-            icon: [],
-            typestore: "",
-        },
+      resolver: zodResolver(formSchema),
+      defaultValues: {
+        name: initialData.name || "",
+        description: initialData.description || "",
+        icon: initialData.icon ? (Array.isArray(initialData.icon) ? initialData.icon : [initialData.icon]) : [],
+        typestore: initialData.typestore || "",
+      },
     });
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

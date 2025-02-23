@@ -4,6 +4,7 @@ type CollectionType = {
     name: string;
     icon: string;
     color: string;
+    description: string;
     typestore: string;
     createdAt: string;
     updatedAt: string;

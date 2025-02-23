@@ -1,6 +1,4 @@
 // /* eslint-disable react-hooks/exhaustive-deps */
-// "use client"
-
 // import { useEffect, useState } from "react"
 
 // import Loader from "@/components/custom ui/Loader"
@@ -28,7 +26,7 @@
 //     }, [])
 
 //     return loading ? <Loader /> : (
-//         // <CollectionForm initialData={collectionDetails ?? {}} />
+//         <CollectionForm initialData={collectionDetails || null} />
 //     )
 // }
 
